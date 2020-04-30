@@ -19,6 +19,7 @@ class ExpenseApp extends StatelessWidget {
         cardColor: Colors.purple[800],
         buttonColor: Colors.amber[400],
         accentColor: Colors.black,
+        fontFamily: 'Baloo Tamma 2'
       ),
     );
   }
@@ -32,12 +33,12 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
-  final _transactions = [
-    Transaction(id: 't1', title: 'Tenis Nike Shox', value: 310.90, date: DateTime.now()),
-    Transaction(id: 't2', title: 'Conta de Internet', value: 190.00, date: DateTime.now()),
-    Transaction(id: 't3', title: 'Conta de Luz', value: 250.00, date: DateTime.now()),
-    Transaction(id: 't4', title: 'Conta de Agua', value: 90.00, date: DateTime.now()),
-    Transaction(id: 't5', title: 'Conta de Telefone', value: 60.00, date: DateTime.now()),
+  final List<Transaction> _transactions = [
+    // Transaction(id: 't1', title: 'Tenis Nike Shox', value: 310.90, date: DateTime.now()),
+    // Transaction(id: 't2', title: 'Conta de Internet', value: 190.00, date: DateTime.now()),
+    // Transaction(id: 't3', title: 'Conta de Luz', value: 250.00, date: DateTime.now()),
+    // Transaction(id: 't4', title: 'Conta de Agua', value: 90.00, date: DateTime.now()),
+    // Transaction(id: 't5', title: 'Conta de Telefone', value: 60.00, date: DateTime.now()),
   ];
 
 
