@@ -1,9 +1,10 @@
 import 'dart:math';
+import 'package:expense/components/chart.dart';
+import 'package:expense/components/transactionForm.dart';
+import 'package:expense/components/transactionList.dart';
 import 'package:flutter/material.dart';
 
-import 'package:expense/models/components/transactionForm.dart';
 import 'package:expense/models/transaction.dart';
-import 'package:expense/models/components/transactionList.dart';
 
 main() => runApp(ExpenseApp());
 
@@ -34,13 +35,21 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
 
   final List<Transaction> _transactions = [
-    // Transaction(id: 't1', title: 'Tenis Nike Shox', value: 310.90, date: DateTime.now()),
-    // Transaction(id: 't2', title: 'Conta de Internet', value: 190.00, date: DateTime.now()),
-    // Transaction(id: 't3', title: 'Conta de Luz', value: 250.00, date: DateTime.now()),
-    // Transaction(id: 't4', title: 'Conta de Agua', value: 90.00, date: DateTime.now()),
-    // Transaction(id: 't5', title: 'Conta de Telefone', value: 60.00, date: DateTime.now()),
+    Transaction(id: 't1', title: 'Tenis Nike Shox', value: 310.90, date: DateTime.now().subtract(Duration(days: 38))),
+    Transaction(id: 't1', title: 'Tenis Nike Shox', value: 310.90, date: DateTime.now().subtract(Duration(days: 3))),
+    Transaction(id: 't2', title: 'Conta de Internet', value: 190.00, date: DateTime.now().subtract(Duration(days: 4))),
+    Transaction(id: 't3', title: 'Conta de Luz', value: 250.00, date: DateTime.now().subtract(Duration(days: 5))),
+    Transaction(id: 't4', title: 'Conta de Agua', value: 100090.00, date: DateTime.now().subtract(Duration(days: 6))),
+    Transaction(id: 't5', title: 'Conta de Telefone', value: 60.00, date: DateTime.now().subtract(Duration(days: 7))),
   ];
 
+  List<Transaction> get _recentTransactions {
+    return _transactions.where((tr) {
+      return tr.date.isAfter(DateTime.now().subtract(
+        Duration(days: 7)
+      ));
+    }).toList();
+  }
 
   _addTransaction(String title, double value) {
     final newTransaction = Transaction(
@@ -83,13 +92,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: SingleChildScrollView(
               child: Column(
           children: <Widget>[
-            Container(
-              width: double.infinity,
-              child: Card(
-                color: Theme.of(context).primaryColor,
-                child: Text('Grafico'),
-              ),
-            ),
+            Chart(_transactions),
             TransactionList(_transactions)
             ],
         ),
